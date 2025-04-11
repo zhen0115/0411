@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+    <div class="menu">
+      <ul>
+        <li><a href="#" onclick="hideIframe()">首頁</a></li>
+        <li><a href="#" onclick="showIframe('https://example.com/about')">自我介紹</a></li>
+        <li>
+          <a href="#">作品集</a>
+          <ul class="submenu">
+            <li><a href="#" onclick="showIframe('https://hackmd.io/@zhen0115/SyV7HISqyl')">第一周</a></li>
+            <li><a href="#" onclick="showIframe('https://hackmd.io/@zhen0115/BkPsikOo1e')">第二周</a></li>
+            <li><a href="#" onclick="showIframe('https://hackmd.io/@zhen0115/HyoMyvc3yx')">第三周</a></li>
+            <li><a href="#" onclick="showIframe('https://zhen0115.github.io/0328/')">第四周</a></li>
+          </ul>
+        </li>
+        <li><a href="#" onclick="showIframe('https://example.com/test')">測驗卷</a></li>
+        <li><a href="#" onclick="showIframe('https://example.com/videos')">教學影片</a></li>
+      </ul>
+    </div>
+
+    <iframe id="contentFrame" src="" style="display: none;"></iframe>
+
+    <script src="sketch.js"></script>
+    <script>
+      function showIframe(url) {
+        const iframe = document.getElementById('contentFrame');
+        iframe.src = url;
+        iframe.style.display = 'block';
+      }
+
+      function hideIframe() {
+        const iframe = document.getElementById('contentFrame');
+        iframe.style.display = 'none';
+        iframe.src = '';
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const menu = document.querySelector('.menu');
+
+        // 自動滑入滑出效果
+        setInterval(() => {
+          menu.classList.add('show'); // 滑入
+          setTimeout(() => {
+            menu.classList.remove('show'); // 滑出
+          }, 2000); // 2 秒後滑出
+        }, 4000); // 每 4 秒觸發一次滑入滑出
+      });
+    </script>
+  </body>
+</html>

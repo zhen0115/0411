@@ -1,0 +1,84 @@
+/*css主要設定網頁的格式設定
+  這裡設定了html和body的邊距和內邊距為0，並將canvas設置為塊級元素
+  這樣可以確保canvas元素在頁面上正確顯示
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* 動畫在最底層 */
+}
+
+.menu {
+  background-color: #ffe5d9; /* 區塊背景顏色 */
+  padding: 10px;
+  border-radius: 8px; /* 圓角 */
+  position: absolute;
+  top: 10px;
+  right: -300px; /* 初始位置隱藏在畫面外 */
+  z-index: 3; /* 選單在最上層 */
+  transition: right 0.5s ease; /* 滑入滑出效果 */
+}
+
+.menu.show {
+  right: 10px; /* 滑入畫面 */
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* 將主選單項目顯示在同一行 */
+}
+
+.menu ul li {
+  position: relative; /* 為子選單定位 */
+  margin: 0 10px; /* 主選單項目之間的間距 */
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: #000; /* 主選單文字顏色 */
+  font-weight: bold;
+}
+
+.menu ul .submenu {
+  display: none; /* 預設隱藏子選單 */
+  position: absolute;
+  top: 100%; /* 子選單顯示在主選單下方 */
+  left: 0;
+  background-color: #ffe5d9; /* 子選單背景顏色 */
+  padding: 10px;
+  border-radius: 8px;
+  list-style: none;
+}
+
+.menu ul li:hover .submenu {
+  display: block; /* 滑鼠懸停時顯示子選單 */
+}
+
+.menu ul .submenu li {
+  margin: 5px 0; /* 子選單項目之間的間距 */
+}
+
+.menu ul .submenu li a {
+  font-weight: normal; /* 子選單文字樣式 */
+  color: #000;
+}
+
+#contentFrame {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.2); /* 背景透明度 0.2 */
+  border: none;
+  z-index: 2; /* iframe 在中間層 */
+}
